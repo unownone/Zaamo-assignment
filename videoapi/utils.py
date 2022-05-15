@@ -57,7 +57,7 @@ def get_videos(query: str):
         published = timezone.now() - timedelta(seconds=20)
         searches = api.search_by_keywords(
             q=query, search_type=["video"], count=100,
-            limit=100,publishedAfter=published.strftime("%Y-%m-%dT%H:%M:%SZ")
+            limit=100,kwargs={"publishedAfter":published.strftime("%Y-%m-%dT%H:%M:%SZ")}
         )
     except PyYouTubeException as e:
         print("expired ",api_key)
