@@ -19,7 +19,7 @@ class GetVideos(generics.ListAPIView):
     def get_queryset(self):
         query = self.request.query_params.get("query", None)
         queryset = Video.objects.all()
-        if query is not None:
+        if query is not None or query!="":
             queryset2 = queryset.filter(id=query)
             if queryset2.exists():
                 queryset = queryset2
